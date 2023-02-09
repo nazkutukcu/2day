@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        var names = ["ahmet", "mehmet", "hasan", "ayşe"]
+
+        for (let index = 0; index < names.length; index++) {
+
+            const item = names[index];
+
+            console.log(item);
+        }
+
+        names.forEach(item=>{
+            console.log(item)
+        })
+
+        let index=0;
+        while(index<names.length){
+            console.log(`while ${names[index]}`);    
+            index++ ;
+        }
+
+        var doIndex=0;
+        do{
+            console.log(`do while ${names[doIndex]}`);
+            doIndex++;
+        }while(doIndex<names.length);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
