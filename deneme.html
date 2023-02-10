@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        let sayHello2 = () => {
+            console.log("Hello World 2")
+        }
+        sayHello2()
+
+        let sayHello = function () {
+            console.log("Hello World!")
+        }
+        sayHello()
+
+        function addToCard2(productName, quantity, unitPrice) {
+
+        }
+
+        //obje oluşturma
+        let product1 = { name: "Elma", unitPrice: 10, quantity: 5 }
+
+        function addToCart3(product) {
+            console.log("Ürün : " + product.name)
+            console.log("Adet : " + product.unitPrice)
+            console.log("Fiyat : " + product.quantity)
+        }
+
+        addToCart3(product1)
+
+        let product2 = { name: "Elma", unitPrice: 10, quantity: 5 }
+        let product3 = { name: "Elma", unitPrice: 10, quantity: 5 }
+
+        product2=product3
+        product2.name="Karpuz"
+        console.log(product3.name)
+        
+
+
+        function addToCart4(products) {
+            console.log(products)
+        }
+
+        products= [
+            { name: "Elma", unitPrice: 10, quantity: 5 },
+            { name: "Armut", unitPrice: 10, quantity: 5 },
+            { name: "Karpuz", unitPrice: 10, quantity: 5 }
+        ]
+
+        addToCart4(products)
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
