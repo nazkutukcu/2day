@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .card-body {
+            background-color: ghostwhite;
+        }
+
+        .custom-show {
+            display: block;
+        }
+
+        .custom-hide {
+            display: none;
+        }
+
+        .cartAmount {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #f8d7da;
+            color: white;
+            padding: 25px 60px;
+            margin-bottom: 30px;
+        }
+
+        .cart {
+            position: relative;
+            background-color: white;
+            color: #212529;
+            font-size: 30px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .bg-modal {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .up-modal {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .modal-content {
+            width: 500px;
+            height: 150px;
+            background-color: white;
+            border-radius: 4px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+
+
+        }
+
+        .close,
+        .close2 {
+            position: absolute;
+            top: 0;
+            right: 14px;
+            font-size: 42px;
+            transform: rotate(45deg);
+            cursor: pointer;
+        }
+
+        div#name_error,
+        div#price_error {
+            margin-top: 5px;
+            width: 100%;
+            font-size: 18px;
+            color: #C62828;
+            background-color: rgba(255, 0, 0, 0.1);
+            text-align: center;
+            padding: 5px 8px;
+            border-radius: 3px;
+            border: 1px solid #EF9A9A;
+            display: none;
+            border: red;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-4 offset-md-4 my-5">
+            <div class="card">
+                <div class="card-body">
+
+                    <!--header/sepet:ürün sayısı yazıcak--------------------->
+
+                    <div class="navbar">
+                        <h2>Ürün Kaydet</h2>
+                        </a>
+                        <div class="cart">
+                            <i class="bi bi-cart"></i>
+                            <div id="sayi" class="cartAmount">0</div>
+                        </div>
+                        </a>
+                    </div>
+
+                    <!------------------------------------------------------>
+
+
+                    <div id="result">
+                        <div id="divSucceess" class="alert alert-success custom-hide" role="alert">
+                            Ürün başarılı kaydedildi.
+                        </div>
+                        <div id="divFail" class="alert alert-danger custom-hide" role="alert">
+                            Bir hata meydana geldi.
+                        </div>
+                    </div>
+
+                    <form id="form">
+                        <div class="mb-3">
+                            <label for="txtName" class="form-label">Ürün ismi :</label>
+                            <input type="text" class="form-control" id="txtName" />
+                            <div id="name_error">Ürün ismi alanı 3 ile 10 karakter uzunluğunda olmalıdır!</div>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtPrice" class="form-label">Ürün Fiyat :</label>
+                            <input type="number" class="form-control" id="txtPrice" />
+                            <div id="price_error">Ürün fiyatı 100tl ile 5000tl aralığında olmalıdır!</div>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="dropColorMenu" class="form-label">Ürün Renk :</label>
+                            <select class="form-control" id="dropColorMenu">
+                                <option value="">Seçiniz</option>
+                                <option value="1">Kırmızı</option>
+                                <option value="2">Mavi</option>
+                                <option value="3">Yeşil</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="checkPublish">
+                            <label class="form-check-label" for="checkPublish">Yayınlansın mı?</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <p>Yayınlanma süresini seçiniz</p>
+                            <div class="form-check">
+                                <input class="form-check-input" value="15" type="radio" name="radioPublishDay">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    15 gün
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input value="30" class="form-check-input" type="radio" name="radioPublishDay">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    30 gün
+                                </label>
+                            </div>
+                            <div aria-valuemax="45" class="form-check">
+                                <input class="form-check-input" type="radio" name="radioPublishDay">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    45 gün
+                                </label>
+                            </div>
+                        </div>
+                        <button id="btnSaveOrUpdate"
+                            onclick="validateName();validatePrice();validateColor();validatePublish();saveOrUpdate()"
+                            type="button" class="btn btn-primary">Kaydet</button>
+                        <button type="reset" class="btn btn-warning">Temizle</button>
+                    </form>
+                </div>
+            </div>
+            <!--form aşağısında doldurulan tablo-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Fiyat</th>
+                        <th>Renk</th>
+                        <th>Yayında mı?</th>
+                        <th>Yayın süresi</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!--kaydet modal section-->
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="close">+</div>
+            <i class="bi bi-check-circle-fill"></i>
+            <h1>Kaydedildi</h1>
+            <p>Ürün kaydedildi</p>
+
+        </div>
+
+    </div>
+
+    <!--güncelle modal section-->
+    <div class="up-modal">
+        <div class="modal-content">
+            <div class="close2">+</div>
+            <i class="bi bi-check-circle-fill"></i>
+            <h1>Güncellendi</h1>
+            <p>Ürün güncellendi</p>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+
+
+    var productIncreaseId = 0; // productId identity field
+    var updateProductId = 0;
+    var productList = [];  //ürünler için liste
+    const divSuccess = document.querySelector("#divSucceess")
+    const divFail = document.querySelector("#divFail")
+    const btnSaveOrUpdate = document.querySelector("#btnSaveOrUpdate");
+    let isSaveOrUpdateType = "saveType";
+    const arrayBtnAction = [
+        { key: "saveType", func: save },
+        { key: "updateType", func: update }
+    ]
+    function btnLoadToForm(id) {   //güncellenecek ürün formda görüntülenir
+        updateProductId = id;
+        btnSaveOrUpdate.textContent = "güncelle";
+        isSaveOrUpdateType = "updateType"
+        const productToUpdate = productList.find(x => x.id == id);
+
+
+
+        document.getElementById("txtName").value = productToUpdate.name;
+        document.getElementById("txtPrice").value = productToUpdate.price;
+        document.querySelector("#dropColorMenu").value = productToUpdate.color;
+        document.querySelector("#checkPublish").checked = productToUpdate.isPublish;
+        const radioButtonArray = document.querySelectorAll("input[name='radioPublishDay']")
+
+        radioButtonArray.forEach(x => {
+            if (x.value == productToUpdate.publishDay) x.checked = true;
+        })
+
+
+    }
+
+
+    function loadTable() {
+
+        const tableBody = document.querySelector("#tableBody")
+        tableBody.innerHTML = '';
+        productList.forEach(newProduct => {
+            let newRow = document.createElement("tr");
+            newRow.innerHTML = `
+      <td>${newProduct.name}</td>
+      <td>${newProduct.price}</td>
+      <td>${newProduct.color}</td>
+      <td>${newProduct.isPublish}</td>
+      <td>${newProduct.publishDay}</td>
+      <td><button id="btnUpdate" onclick="highlight(this); btnLoadToForm(${newProduct.id})" type="button" class="btn btn-success">güncelle</button></td>
+      <td><button type="button" class="btn btn-danger" onClick= "checkdelete() ; removeItem(${newProduct.id})"  >Remove</button></td>
+      `;
+
+            tableBody.appendChild(newRow);
+
+        })
+        adet();
+
+    }
+    function showSuccess() {
+        divSuccess.classList.remove("custom-hide");
+        divSuccess.classList.add("custom-show");
+    }
+    function showFail() {
+        divFail.classList.remove("custom-hide");
+        divFail.classList.add("custom-show")
+    }
+    function reset() {
+        document.querySelector("form").reset();
+        isSaveOrUpdateType = "saveType"
+        btnSaveOrUpdate.textContent = "Kaydet";
+        setTimeout(function () {
+            divSuccess.classList.remove("custom-show");
+            divFail.classList.remove("custom-show");
+            divSuccess.classList.add("custom-hide")
+            divFail.classList.add("custom-hide")
+
+        }, 2000)
+    }
+    function save() {
+        const name = document.getElementById("txtName").value;
+        const price = document.getElementById("txtPrice").value;
+        const color = document.querySelector("#dropColorMenu").value;
+        const isPublish = document.querySelector("#checkPublish").checked;
+        const publishDay = document.querySelector("input[name='radioPublishDay']:checked").value;
+
+        productIncreaseId++;
+        const newProduct = { id: productIncreaseId, name: name, price: price, color: color, isPublish: isPublish, publishDay: publishDay }
+
+        try {
+
+            console.log(newProduct)
+            showSuccess();
+            productList.push(newProduct);
+            loadTable();
+            document.querySelector('.bg-modal').style.display = 'flex'; //kaydedildi modal
+            closeSaveModal();
+
+        }
+        catch (error) {
+            showFail();
+
+        }
+        finally {
+            reset();
+        }
+    }
+
+
+
+    function update() {
+
+        const name = document.getElementById("txtName").value;
+        const price = document.getElementById("txtPrice").value;
+        const color = document.querySelector("#dropColorMenu").value;
+        const isPublish = document.querySelector("#checkPublish").checked;
+        const publishDay = document.querySelector("input[name='radioPublishDay']:checked").value;
+
+        let productToUpdateIndex = productList.findIndex(product => product.id == updateProductId);
+
+        productList[productToUpdateIndex].name = name;
+        productList[productToUpdateIndex].price = price;
+        productList[productToUpdateIndex].color = color;
+        productList[productToUpdateIndex].isPublish = isPublish;
+        productList[productToUpdateIndex].publishDay = publishDay;
+
+
+        try {
+            showSuccess();
+            loadTable();
+            document.querySelector('.up-modal').style.display = 'flex';  //güncellendi modal
+            closeUpModal();
+
+
+        } catch (error) {
+            showFail();
+
+        }
+        finally {
+            reset();
+        }
+    }
+
+    function saveOrUpdate() {
+        arrayBtnAction.find(x => x.key == isSaveOrUpdateType).func();
+    }
+
+
+    //form tablosundan ürün silme
+    function removeItem(rec) {
+        //console.log(rec);
+        var filt = productList.filter((a, i) => {
+            if (rec == a.id) {
+                productList.splice(i, 1);
+                loadTable();
+            }
+        }) }
+
+    //silme işleminden önce uyarı mesajı gözüküyor
+    function checkdelete() {
+        var result = confirm("Ürün kaydını silmek istediğinize emin misiniz?");
+        if (result == false) {
+            event.defaultPrevented();
+        }
+    }
+
+    //tabloda Güncelle butonuna basıldığında ilgili satır vurgulanıyor
+    function highlight(ctrl) {
+        var parent = ctrl.parentNode.parentNode;
+        parent.style.background = "#f8d7da";
+    }
+
+    //ürün adet sayısı bulma
+    function adet() {
+        let sayi = 0;
+        for (eleman of productList) {
+            sayi++;
+        }
+        console.log("Ürün sayısı: ", sayi);
+        document.getElementById('sayi').innerHTML = sayi;
+    }
+
+
+    //close modal functions
+    function closeSaveModal() {
+        document.querySelector('.close').addEventListener('click',
+            function () {
+                document.querySelector('.bg-modal').style.display = 'none';
+            })
+    }
+
+    function closeUpModal() {
+        document.querySelector('.close2').addEventListener('click',
+            function () {
+                document.querySelector('.up-modal').style.display = 'none';
+            })
+    }
+
+
+    //validation functions 
+    //bütün işlemleri methodlar halinde yazmaya çalıştım ,alt alta if'ler olmaması için => ( tüm koşullar doğru girildikten sonra kaydet çalışır , kullanıcı bir hatayı düzelterek kaydete bastıktan sonra diğer error mesajını görüntüler)
+                              
+                                 
+
+    function validateName() {
+
+        var name_error = document.getElementById('name_error');
+        var name = document.getElementById("txtName").value;
+        if (name.length > 10 || name.length < 3) {
+            document.querySelector('div#name_error').style.display = 'flex';
+            document.name.focus();
+            return false;
+        }
+        else {
+            document.querySelector('div#name_error').style.display = 'none';
+            return true;
+        } }
+
+
+    function validatePrice() {
+
+        var price_error = document.getElementById('price_error');
+        var price = document.getElementById("txtPrice").value;
+        if (price < 100 || price > 5000) {
+
+            document.querySelector('div#price_error').style.display = 'flex';
+            document.price.focus();
+            return false;
+        }
+
+        else {
+            document.querySelector('div#price_error').style.display = 'none';
+            return true;
+        }
+    }
+
+    function validateColor() {
+        const color = document.querySelector("#dropColorMenu").value;
+        if (color == "") {
+            alert("Lütfen bir renk seçiniz");
+            document.color.focus();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    function validatePublish() {
+        const isPublish = document.querySelector("#checkPublish").checked;
+        if (isPublish == "") {
+            alert("Lütfen bir gün seçiniz");
+            document.isPublish.focus();
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+
+</script>
+
+
+</html>
