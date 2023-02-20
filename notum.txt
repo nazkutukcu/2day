@@ -1,3 +1,0 @@
--karışmaması için solid prensibleri örneklerini (...-examples) dosyalar halinde ayırdım. 
-
--Terminalde örneğin (cd srp-example) dedikten sonra çalışıyor. Üst dizine çıkmak için (..cd ),yoksa dosya yolunu hatası veriyor.
