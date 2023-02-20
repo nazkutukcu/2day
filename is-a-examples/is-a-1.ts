@@ -1,10 +1,10 @@
-
+//is a
 namespace isA {
 
 
     abstract class LearnLanguage {
 
-        learnTypeScript(): void { }
+        //learnTypeScript(): void { }     //eklersek dinamik olarak ekleyemeyiz.
 
         abstract learnEnglish(): void
 
@@ -14,30 +14,30 @@ namespace isA {
 
     class Student1 extends LearnLanguage {
         learnEnglish(): void {
-            console.log("İngilizce çalışıyor")
+            console.log("İngilizce öğreniyor,level:beginner")
         }
         learnGerman(): void {
-            console.log("Almanca çalışıyor")
+            console.log("Almanca öğreniyor,level:beginner")
         }
 
     }
 
     class Student2 extends LearnLanguage {
         learnEnglish(): void {
-            console.log("ingilizce çalışıyor")
+            console.log("ingilizce öğreniyor ,level:intermediate")
         }
         learnGerman(): void {
-            console.log("ingilizce çalışıyor, level:intermadiate")
+            console.log("ingilizce öğreniyor, level:intermadiate")
         }
 
     }
 
     class Student3 extends LearnLanguage {
         learnEnglish(): void {
-            console.log("ingilizce çalışıyor, level:advanced")
+            console.log("ingilizce öğreniyor, level:advanced")
         }
         learnGerman(): void {
-            console.log("almanca çalışıyor")
+            console.log("almanca öğreniyor,level :advanced")
         }
 
     }
@@ -49,9 +49,17 @@ namespace isA {
             throw new Error("yeniden öğrenemez")
         }
         learnGerman(): void {
-            console.log("almanca çalışıyor")
+            console.log("almanca öğreniyor")
         }
 
 
     }
+
+    let student1 = new Student1();
+    student1.learnEnglish();
+    student1.learnGerman();
+    
+    let englishTeacher= new EnglishTeacher();
+    englishTeacher.learnEnglish();  //error 
+    englishTeacher.learnGerman();
 }

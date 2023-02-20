@@ -1,9 +1,9 @@
 //Has-a
 //Var olan kodu bozmadan yeni diller öğrenmeyi dinamik hale getiriyoruz.
-namespace hasA{
+namespace hasA1{
     
 interface ILearnEnglish {
-    learnEnghish(): void
+    learnEnglish(): void
 }
 interface ILearnGerman {
     learnGerman(): void
@@ -13,19 +13,19 @@ interface ILearnTypescript{
 }
 
 class LearnEnglishType1 implements ILearnEnglish {     
-    learnEnghish(): void {                     
+    learnEnglish(): void {                     
         console.log("İngilizce seviyesi: Beginner")
     }
    
 }
 class LearnEnglishType2 implements ILearnEnglish {
-    learnEnghish(): void {
+    learnEnglish(): void {
         console.log("İngilizce seviyesi: Intermediate")
     }
    
 }
 class LearnEnglishType3 implements ILearnEnglish {
-    learnEnghish(): void {
+    learnEnglish(): void {
         console.log("İngilizce seviyesi: Advanced ")
     }
    
@@ -67,7 +67,7 @@ abstract class LearnLanguage{
         console.log("typeScript çalışıyorum")
     }
     learnEnglish(): void {
-        this._learnEnglish.learnEnghish();
+        this._learnEnglish.learnEnglish();
     }
     learnGerman(): void {
         this._learnGerman.learnGerman()
