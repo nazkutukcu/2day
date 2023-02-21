@@ -1,38 +1,61 @@
-namespace srp2{
+namespace srp2 {
 
-    class WatchList {
-        name:string;
-        genre:string;
+    class Film {
+        name: string;
+        genre: string;
+        director:string;
 
-        constructor(name:string,genre:string){
-            this.name=name;
-            this.genre=genre;
+        constructor(name: string, genre: string, director:string) {
+            this.name = name;
+            this.genre = genre;
+            this.director=director;
         }
-      
-      
     }
 
-      class EditWatchList {
-
+    let watchList: Film[] = [];
+     class CreateWatchList{
         
-        list: WatchList[] = [];
-        add(list:WatchList){
-            this.list.push(list);
+        add(): Film[] {
+       
+            watchList.push(new Film('Little Shop Of Horrors', "Musical/Horror","Frank Oz"));
+            watchList.push(new Film('Coraline', "Fantasy","Henry Selick"));
+            watchList.push(new Film('Amadeus', "Drama/Musical"," Miloš Forman"));
+            watchList.push(new Film('Back to the Future', "Sci-fi"," Robert Zemeckis"));
+            watchList.push(new Film('Scream 5', "Horror"," Tyler Gillett"));
+            watchList.push(new Film('Knives Out', "Mystery"," Rian Johnson"));
+
+            return watchList;
+    
         }
-      }
+                   
+     }
+    class ShowMyWatchList {
 
-      class ShowMyList {
-        
-        show(list: WatchList[]) {
-            list.forEach(x => {
-                console.log(x);
+        show(watchList: Film[]) {
+            watchList.forEach(x => {
+              console.log( `Film adı: ${x.name} - Tür: ${x.genre} - Yönetmen: ${x.director}`) ;
+              
             })
         }
-      }
+    }
 
-      var watchList = new WatchList("Little Shop Of Horrors","Musical");
-     
-      
-      
+    
+    let myList = new CreateWatchList();
+    myList.add();
+    let show1 = new ShowMyWatchList()
+    show1.show(watchList);
+    
+    
+
+    
+ 
+
+
+   
+    
+    
+
+
+
 
 }
