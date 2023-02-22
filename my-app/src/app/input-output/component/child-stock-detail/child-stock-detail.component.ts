@@ -7,6 +7,6 @@ import { Stock } from '../../models/stock';
   styleUrls: ['./child-stock-detail.component.css']
 })
 export class ChildStockDetailComponent {
-  @Input() selectedProduct:Stock | undefined;
+  @Input() selectedStock:Stock | undefined;
 
 }

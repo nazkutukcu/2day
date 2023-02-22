@@ -8,16 +8,16 @@
 
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Color</th>
                         <th scope="col">NumberOfStock</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr [ngClass]="{'selected':highlightRow(stock.id)}" *ngFor="let stock of stockList">
+                    <tr  *ngFor="let stock of stockList">
                         <th>{{stock.id}}</th>
                         <td>{{stock.name}}</td>
-                        <td>{{stock.price}}</td>
+                        <td>{{stock.Color}}</td>
                         <td>{{stock.NumberOfStock}}</td>
                         <td><button (click)="showDetail(stock.id)">detay göster</button></td>
                     </tr>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Stock } from '../../models/stock';
+import { StockServiceService } from '../../stock-service.service';
 
 @Component({
   selector: 'app-parent-stock',
@@ -8,24 +9,23 @@ import { Stock } from '../../models/stock';
 })
 export class ParentStockComponent {
 
-  stockList: ReadonlyArray<Stock>;
+  productList: ReadonlyArray<Stock>;
   selectedStock: Stock | undefined;
   constructor(
-    /*
-    servis 
-    */
+    private stockService: StockServiceService,
+    //private stockService2: RealProductAPIService
   ) {
-    this.stockList = this.stockList.getAll();
+    this.productList = this.stockService.getAll();
 
-   // servis get all
+    //console.log(stockService2.getAll());
   }
 
-  get toggleProductDetail() {
+  get toggleStockDetail() {
     return this.selectedStock != undefined;
   }
 
-  showDetail(productId: number) {
-   // this.selectedStock = this.selectedStock.getById(productId); servisten gelmeli
+  showDetail(stockId: number) {
+    this.selectedStock = this.stockService.getById(stockId);
   }
 
 }

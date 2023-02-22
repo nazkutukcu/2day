@@ -9,7 +9,7 @@ import { Stock } from './input-output/models/stock';
 })
 export class AppComponent {
   title = 'my-app';
-  //one-way binding
+ 
   name:string='angular';
 
 }
