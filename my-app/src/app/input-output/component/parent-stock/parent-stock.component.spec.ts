@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NormalComponent } from './normal.component';
+import { ParentStockComponent } from './parent-stock.component';
 
-describe('NormalComponent', () => {
-  let component: NormalComponent;
-  let fixture: ComponentFixture<NormalComponent>;
+describe('ParentStockComponent', () => {
+  let component: ParentStockComponent;
+  let fixture: ComponentFixture<ParentStockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NormalComponent ]
+      declarations: [ ParentStockComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NormalComponent);
+    fixture = TestBed.createComponent(ParentStockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
