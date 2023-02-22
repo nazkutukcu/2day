@@ -102,8 +102,14 @@ var hasA1;
     var student1 = new Student1(new LearnEnglishType2(), new LearnGermanType3());
     student1.learnEnglish();
     student1.learnGerman();
-    student1.SetLearnEngOrGerman(new LearnEnglishType1(), new LearnGermanType1());
+    console.log("---------------------------------------------------------------");
+    /*
+    student1.SetLearnEngOrGerman(new LearnEnglishType1(),new LearnGermanType1())
     student1.learnEnglish();
     student1.learnGerman();
     student1.learnTypeScript();
+    */
+    student1.SetLearnEngOrGerman(new LearnEnglishType1(), new LearnGermanType1());
+    student1.learnEnglish();
+    student1.learnGerman();
 })(hasA1 || (hasA1 = {}));

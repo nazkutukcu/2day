@@ -38,10 +38,25 @@ namespace interit1 {
     }
 
     class PhysicalCourse extends Course {
+        
+        constructor(id: number, name: string) {
+            super(id, name);
+           
+        }
 
+        showCourseInfo(): void {
+          
+            console.log(` ${this.id} - ${this.name}  `);
+
+        }
     }
 
     var courseOnline = new CourseOnline(1, "programming", "case study");
     courseOnline.showCourseInfo();
 
-}
+    var coursePhysical= new PhysicalCourse(2,"english")
+    coursePhysical.showCourseInfo();
+
+
+    } 
+

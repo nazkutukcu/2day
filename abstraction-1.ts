@@ -13,7 +13,7 @@ class JuniorDevMaas implements IMaasHesapla{
 class AnaylistMaas implements IMaasHesapla{
                 
     maasHesapla():number{
-      return 40000; //analisr'ın net maaş miktarı
+      return 40000; //analist'in net maaş miktarı
     }
     
 }
@@ -45,6 +45,10 @@ class BrutMaasHesaplama {
 
 }
 
-var brutMaas: BrutMaasHesaplama = new BrutMaasHesaplama(new JuniorDevMaas());
+var brutMaas1: BrutMaasHesaplama = new BrutMaasHesaplama(new JuniorDevMaas());
+var brutMaas2: BrutMaasHesaplama = new BrutMaasHesaplama(new AnaylistMaas());
+var brutMaas3: BrutMaasHesaplama = new BrutMaasHesaplama(new SeniorDevMaas());
 
-console.log(`Brüt Maaşınız: ${brutMaas.maasHesapla()}`);
+console.log(`Junior Brüt Maaş: ${brutMaas1.maasHesapla()}`);
+console.log(`Analist Brüt Maaş: ${brutMaas2.maasHesapla()}`);
+console.log(`Senior Brüt Maaş: ${brutMaas3.maasHesapla()}`);

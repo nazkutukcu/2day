@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var hasA2;
 (function (hasA2) {
-    //
+    //var olan kodu bozmadan sayfadan veri alma,gönderme işlemlerini dinamik hale getirebiliyoruz.
     var GetDataType1 = /** @class */ (function () {
         function GetDataType1() {
         }

@@ -2,7 +2,7 @@ namespace lsp2 { //dikdörtgen,kare
 
 
     interface IShape {
-        getArea(): number;   //ortak olmayan fonksiyon çünkü kare ve dikdörtgende alan hesaplansada karede tek kenar alınması yeterli oluyor. Bu yüzden farklı içi doldurulucak.
+        getArea(): number;   //ortak olmayan fonksiyon çünkü kare de tek kenar alınması yeterli oluyor. Bu yüzden farklı, içi doldurulucak.
     }
 
     class Rectangles {

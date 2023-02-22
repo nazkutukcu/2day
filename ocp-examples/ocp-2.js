@@ -54,13 +54,14 @@ var ocp2;
         return CaloryCalculate;
     }());
     var externalFood = Food.Pizza;
-    var externalPiece = 5;
+    var extarnalPiece = 5;
     var caloryArray = [];
     caloryArray.push({ food: Food.Pizza, CaloryCalculate: new PizzaCaloryCalculate() });
     caloryArray.push({ food: Food.Cake, CaloryCalculate: new CakeCaloryCalculate() });
     caloryArray.push({ food: Food.Baklava, CaloryCalculate: new BaklavaCaloryCalculate() });
-    var currentCaloryCalculate = caloryArray.find(function (x) { return x.food == externalFood; });
-    console.log(currentCaloryCalculate === null || currentCaloryCalculate === void 0 ? void 0 : currentCaloryCalculate.CaloryCalculate.calculate(externalFood));
+    var currentCaloryCalculate = caloryArray.forEach(function (x) {
+        console.log("".concat(Food[x.food], " ").concat(x.CaloryCalculate.calculate(extarnalPiece)));
+    });
     /*
     var caloryCal = new CaloryCalculate();
     //console output with good way

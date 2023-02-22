@@ -19,7 +19,6 @@ var isA;
     var LearnLanguage = /** @class */ (function () {
         function LearnLanguage() {
         }
-        LearnLanguage.prototype.learnTypeScript = function () { };
         return LearnLanguage;
     }());
     var Student1 = /** @class */ (function (_super) {
@@ -77,7 +76,16 @@ var isA;
     var student1 = new Student1();
     student1.learnEnglish();
     student1.learnGerman();
+    console.log("------------------------------------");
+    var student2 = new Student2();
+    student2.learnEnglish();
+    student2.learnGerman();
+    console.log("------------------------------------");
+    var student3 = new Student3();
+    student3.learnEnglish();
+    student3.learnGerman();
+    console.log("------------------------------------");
     var englishTeacher = new EnglishTeacher();
-    englishTeacher.learnEnglish();
+    englishTeacher.learnEnglish(); //burdan error gelicek
     englishTeacher.learnGerman();
 })(isA || (isA = {}));

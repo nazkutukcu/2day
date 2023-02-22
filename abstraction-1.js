@@ -12,7 +12,7 @@ var AnaylistMaas = /** @class */ (function () {
     function AnaylistMaas() {
     }
     AnaylistMaas.prototype.maasHesapla = function () {
-        return 40.000; //analisr'ın net maaş miktarı
+        return 40000; //analist'in net maaş miktarı
     };
     return AnaylistMaas;
 }());
@@ -20,7 +20,7 @@ var SeniorDevMaas = /** @class */ (function () {
     function SeniorDevMaas() {
     }
     SeniorDevMaas.prototype.maasHesapla = function () {
-        return 50.000; //senior'ın net maaş miktarı
+        return 50000; //senior'ın net maaş miktarı
     };
     return SeniorDevMaas;
 }());
@@ -34,5 +34,9 @@ var BrutMaasHesaplama = /** @class */ (function () {
     };
     return BrutMaasHesaplama;
 }());
-var brutMaas = new BrutMaasHesaplama(new JuniorDevMaas());
-console.log("Br\u00FCt Maa\u015F\u0131n\u0131z: ".concat(brutMaas.maasHesapla()));
+var brutMaas1 = new BrutMaasHesaplama(new JuniorDevMaas());
+var brutMaas2 = new BrutMaasHesaplama(new AnaylistMaas());
+var brutMaas3 = new BrutMaasHesaplama(new SeniorDevMaas());
+console.log("Junior Br\u00FCt Maa\u015F: ".concat(brutMaas1.maasHesapla()));
+console.log("Analist Br\u00FCt Maa\u015F: ".concat(brutMaas2.maasHesapla()));
+console.log("Senior Br\u00FCt Maa\u015F: ".concat(brutMaas3.maasHesapla()));

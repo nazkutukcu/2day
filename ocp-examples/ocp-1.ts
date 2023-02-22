@@ -9,7 +9,7 @@ enum CurrencyType {
     Pound
 }
 
-interface ICurrencyConvert {           //all currency types classes implements ICurrencyConvert.
+interface ICurrencyConvert {           
     calculate(amount: number): number;
 }
 
@@ -68,7 +68,7 @@ class CurrencyConvert {
 var currencyConvert = new CurrencyConvert();
 
 
-//?????????
+
 interface ICurrencyConvertKeyValue
 {
  currencyType:CurrencyType;
@@ -90,7 +90,7 @@ interface ICurrencyConvertKeyValue
   console.log(_amountCalculate?.currencyConvert.calculate(extarnalAmount));
 
 
-//??????????????
+ 
 
 
 

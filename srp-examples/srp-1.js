@@ -28,7 +28,7 @@ var srp1;
         }
         WriteMyReadingChallenge.prototype.writeToConsole = function (bookList) {
             bookList.forEach(function (x) {
-                console.log("Kitap ad\u0131: ".concat(x.name, " , Yazar: ").concat(x.author, " ,Sayfa Say\u0131s\u0131: ").concat(x.numberOfPages));
+                console.log("Kitap ad\u0131: ".concat(x.name, " , Yazar: ").concat(x.author, " , Sayfa Say\u0131s\u0131: ").concat(x.numberOfPages));
             });
         };
         return WriteMyReadingChallenge;

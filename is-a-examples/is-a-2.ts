@@ -36,10 +36,10 @@ namespace isA2 {
 
     class Camera extends Device {
         sendMessage(): void {
-            throw new Error("yeniden öğrenemez");
+            throw new Error("mesaj gönderemez");
         }
         call(): void {
-            throw new Error("yeniden öğrenemez")
+            throw new Error("arama yapamaz")
         }
         takePicture(): void {
             console.log("Fotoğraf çekebilir")
@@ -52,10 +52,23 @@ namespace isA2 {
     telephone1.sendMessage();
     telephone1.takePicture();
 
+    console.log("------------------------------------")
+    
+
     var telephone2= new Telephone2();
     telephone2.call();
     telephone2.sendMessage();
     telephone2.takePicture();
+
+    console.log("------------------------------------")
+    
+
+    var camera= new Camera(); //buradan error gelicek
+    camera.call();    
+    camera.sendMessage();
+    camera.takePicture();
+
+
 
     
 

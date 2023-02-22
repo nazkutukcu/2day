@@ -1,44 +1,82 @@
 
 /* wrong way
 
-interface IDevelopersTasks{
-  
-   createResponsiveDesign();
-   databaseManagement();
-   createWebPages()
-   serverArchitecture()
-   security()
+interface IToDoList{
+   doMyHomework();
+   learnNewTechnologies();
+   readBook();
+   workTypeScript();
+   watchMovie();
+   doingYoga(); 
 }
 */
 
 //good way
 
-interface IFrontendDeveloper{
-    createResponsiveDesign();
-    createWebPages()
+interface IdoMyHomework{
+    doMyHomework();
+}
+interface ILearnNewTechnologies{
+    learnNewTechnologies();
+}
+interface IreadBook{
+    readBook();
+}
+interface IworkTypeScript{
+    workTypeScript();
+}
+interface IwatchMovie{
+    watchMovie();
+}
+interface IdoingYoga{
+    doingYoga();
 }
 
-interface IBackendDeveloper{
-    databaseManagement();
-    serverArchitecture()
-    security()
-}
-
-class DevelopersTasks implements IFrontendDeveloper ,IBackendDeveloper{
-    databaseManagement() {
-        throw new Error("Method not implemented.");
+class ToDoList1 implements IdoMyHomework, IreadBook,IworkTypeScript ,IwatchMovie{
+    watchMovie() {
+        console.log("film izle")
     }
-    serverArchitecture() {
-        throw new Error("Method not implemented.");
+    workTypeScript() {
+       console.log("TypeScript çalış")
     }
-    security() {
-        throw new Error("Method not implemented.");
+    readBook() {
+        console.log("Kitap oku");
     }
-    createResponsiveDesign() {
-        throw new Error("Method not implemented.");
-    }
-    createWebPages() {
-        throw new Error("Method not implemented.");
+    doMyHomework() {
+        console.log("Ödevi yap");
     }
 
 }
+
+class ToDoList2 implements ILearnNewTechnologies,IdoMyHomework,IdoingYoga,IreadBook{
+    readBook() {
+        console.log("Kitap oku");
+    }
+    doingYoga() {
+        console.log("Yoga yap");
+    }
+    doMyHomework() {
+        console.log("Ödevi yap");
+    }
+    learnNewTechnologies() {
+        console.log("Yeni teknolojileri araştır");
+    }
+
+}
+
+var toDoList1= new ToDoList1();
+toDoList1.doMyHomework();
+toDoList1.readBook();
+toDoList1.watchMovie();
+toDoList1.workTypeScript();
+
+console.log("-----------------------------------------------------");
+
+var toDoList2= new ToDoList2();
+toDoList2.doMyHomework();
+toDoList2.doingYoga();
+toDoList2.learnNewTechnologies();
+toDoList2.readBook();
+
+
+

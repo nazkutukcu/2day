@@ -58,8 +58,22 @@ namespace isA {
     let student1 = new Student1();
     student1.learnEnglish();
     student1.learnGerman();
+
+    console.log("------------------------------------")
+
+    let student2 = new Student2();
+    student2.learnEnglish();
+    student2.learnGerman();
+
+    console.log("------------------------------------")
+
+    let student3 = new Student3();
+    student3.learnEnglish();
+    student3.learnGerman();
+
+    console.log("------------------------------------")
     
     let englishTeacher= new EnglishTeacher();
-    englishTeacher.learnEnglish();  //error 
+    englishTeacher.learnEnglish();  //burdan error gelicek
     englishTeacher.learnGerman();
 }

@@ -63,10 +63,10 @@ namespace ocp2 {
     
 
     interface ICaloryCalculateKeyValue {
+     
         food: Food;
         CaloryCalculate: ICaloryCalculate;
     }
-
 
     let externalFood = Food.Pizza;
     let externalPiece = 5;
@@ -82,6 +82,10 @@ namespace ocp2 {
     let currentCaloryCalculate = caloryArray.find(x => x.food == externalFood);
 
     console.log(currentCaloryCalculate?.CaloryCalculate.calculate(externalFood));
+
+    
+
+   
 
 
 
