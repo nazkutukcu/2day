@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { RealProductAPIService } from 'src/app/real-product-api.service';
 import { Product } from '../../models/product';
 import { ProductRepository } from '../../product-repository';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-parent-product',
@@ -9,16 +11,15 @@ import { ProductRepository } from '../../product-repository';
 })
 export class ParentProductComponent {
 
-  productRepository:ProductRepository
+  
   productList:ReadonlyArray<Product>;
 
   selectedProduct: Product | undefined;
 
-  constructor(){
+  constructor(private productService:ProductService,private productService2: RealProductAPIService){ 
 
-    this.productRepository=new ProductRepository();
-    this.productRepository.load();
-    this.productList=this.productRepository.getList();
+    
+    this.productList=this.productService.getAll();
 
   }
 
@@ -29,7 +30,7 @@ export class ParentProductComponent {
   }
 
   showDetail(productId:number){
-    this.selectedProduct = this.productRepository.getById(productId);
+    this.selectedProduct = this.productService.getById(productId);
   }
 
 

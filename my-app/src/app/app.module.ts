@@ -10,6 +10,9 @@ import { ChildProductComponent } from './input-output-product/components/child-p
 
 import { ParentProductComponent } from './input-output-product/components/parent-product/parent-product.component';
 import { ChildProductDetailComponent } from './input-output-product/components/child-product-detail/child-product-detail.component';
+import { FakeProductAPIService } from './fake-product-api.service';
+import { RealProductAPIService } from './real-product-api.service';
+import { enviroment } from 'src/enviroment/enviroment';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,26 @@ import { ChildProductDetailComponent } from './input-output-product/components/c
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+
+  providers: [
+    {
+      provide: RealProductAPIService,
+      useClass: IS_PROD ? RealProductAPIService : FakeProductAPIService,
+    },
+
+    // {
+    //   provide: RealProductAPIService,
+    //   useFactory: () =>
+    //     IS_PROD == true
+    //       ? new RealProductAPIService()
+    //       : new FakeProductAPIService(),
+    // },
+
+    // { provide: RealProductAPIService, useClass: RealProductAPIService },
+   
+    { provide: 'BASE_API_URL', useValue: enviroment.baseUrl },
+    { provide: 'MENU_FEATURE', useValue: false },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
