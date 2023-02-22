@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class FakeProductAPIService {
 
   constructor() { }
-  getAll():string[]{
-     return['fake ahmet','fake mehmet','fake hasan']
+
+  getAll(): string[] {
+    return ['fake ahmet', 'fake mehmet', 'fake hasan'];
   }
+ 
 }

@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@angular/core';
-import { inject } from '@angular/core/testing';
 import { Product } from './models/product';
 import { ProductRepository } from './product-repository';
 
@@ -8,9 +7,9 @@ import { ProductRepository } from './product-repository';
 })
 export class ProductService {
 
-  constructor(private productRepository:
-    ProductRepository, @Inject("BASE_API_URL")
-    private baseUrl:string) 
+  constructor(
+    private productRepository:ProductRepository, 
+    @Inject("BASE_API_URL") private baseUrl:string) 
     { 
       console.log(`baseUrl: ${baseUrl}`)
     }

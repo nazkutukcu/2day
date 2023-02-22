@@ -8,7 +8,7 @@ export class RealProductAPIService {
   constructor() { }
 
   save(name:string){
-    console.log("gerçek api'ya istek yapılıcak kayıt oluşturuldu")
+    console.log("gerçek api'ya istek yapılıcak kayıt oluşturuldu");
 
   }
   getAll():string[]{

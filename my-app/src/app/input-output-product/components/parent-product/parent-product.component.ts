@@ -16,17 +16,20 @@ export class ParentProductComponent {
 
   selectedProduct: Product | undefined;
 
-  constructor(private productService:ProductService,private productService2: RealProductAPIService){ 
+  constructor(
+    private productService:ProductService,
+    private productService2: RealProductAPIService){ 
 
     
     this.productList=this.productService.getAll();
+    console.log(productService2.getAll());
 
   }
 
   
   get toggleProductDetail(){
 
-    return this.selectedProduct!=undefined;
+    return this.selectedProduct != undefined;
   }
 
   showDetail(productId:number){

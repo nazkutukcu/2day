@@ -5,15 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParentComponent } from './input-output/parent/parent.component';
 import { Child1Component } from './input-output/child1/child1.component';
-
-import { ChildProductComponent } from './input-output-product/components/child-product/child-product.component';
-
 import { ParentProductComponent } from './input-output-product/components/parent-product/parent-product.component';
+import { ChildProductComponent } from './input-output-product/components/child-product/child-product.component';
 import { ChildProductDetailComponent } from './input-output-product/components/child-product-detail/child-product-detail.component';
+import { Helper } from './shared/helper';
 import { FakeProductAPIService } from './fake-product-api.service';
 import { RealProductAPIService } from './real-product-api.service';
-import { enviroment } from 'src/enviroment/enviroment';
+import { enviroment } from 'src/enviroment/enviroment.prod';
 
+
+const IS_PROD = true;
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +23,8 @@ import { enviroment } from 'src/enviroment/enviroment';
     ParentProductComponent,
     ChildProductComponent,
     ChildProductDetailComponent,
-   
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-
+  imports: [BrowserModule, AppRoutingModule],
   providers: [
     {
       provide: RealProductAPIService,
@@ -44,7 +40,7 @@ import { enviroment } from 'src/enviroment/enviroment';
     // },
 
     // { provide: RealProductAPIService, useClass: RealProductAPIService },
-   
+    { provide: Helper, useClass: Helper },
     { provide: 'BASE_API_URL', useValue: enviroment.baseUrl },
     { provide: 'MENU_FEATURE', useValue: false },
   ],
