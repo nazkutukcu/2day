@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FakeserviceService } from './fakeservice.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+
+ //FakeserviceService:any;
+  constructor(private fakeService:FakeserviceService){
+
+    this.fakeService.getPosts().subscribe(x=>{
+      console.log(x)
+    })
+  }
 }
