@@ -17,9 +17,9 @@ export class StockServiceService {
         id: p.id,
         name: p.name.toUpperCase(),
         category: p.category,
-        price: p.price * 1.18,
+       
         color: p.color,
-        NumberOfStock:p.NumberOfStock,
+        NumberOfstock:p.NumberOfstock,
       });
     });
 

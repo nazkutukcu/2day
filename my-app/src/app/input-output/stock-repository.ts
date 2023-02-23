@@ -1,5 +1,9 @@
-import { Stock } from "./models/stock";
 
+import { Injectable } from "@angular/core";
+import { Stock } from "./models/stock";
+@Injectable({
+  providedIn: 'root'
+})
 export class StockRepository {
     private stockList: Stock[] = [];
 
@@ -7,26 +11,23 @@ export class StockRepository {
     this.stockList.push({
       id: 1,
       name: 'kalem 1',
-      price: 100,
       category: 'kalemler',
       color: 'kırmızı',
-      NumberOfStock:1
+      NumberOfstock:1
     });
     this.stockList.push({
       id: 2,
       name: 'kalem 2',
-      price: 200,
       category: 'kalemler',
       color: 'mavi',
-      NumberOfStock:2
+      NumberOfstock:2
     });
     this.stockList.push({
       id: 3,
       name: 'kalem 3',
-      price: 300,
       category: 'kalemler',
       color: 'yeşil',
-      NumberOfStock:3
+      NumberOfstock:3
     });
   }
   constructor() {
@@ -44,4 +45,26 @@ export class StockRepository {
   add(newProduct: Stock) {
     this.stockList.push(newProduct);
   }
+
+  update(updateStock: Stock) {
+    let stockIndexUpdate = this.stockList.findIndex(
+      (x) => x.id == updateStock.id
+    );
+
+    this.stockList[stockIndexUpdate].name = updateStock.name;
+    this.stockList[stockIndexUpdate].category = updateStock.category;
+    this.stockList[stockIndexUpdate].color = updateStock.color;
+    this.stockList[stockIndexUpdate].NumberOfstock = updateStock.NumberOfstock;
+  }
+  delete(id: number) {
+    //1.way
+    this.stockList = this.stockList.filter((x) => x.id != id);
+
+    // 2.way
+
+    // let productIndexToDelete = this.productList.findIndex(x => x.id == id);
+    // this.productList.splice(productIndexToDelete, 1);
+  }
+
+
 }

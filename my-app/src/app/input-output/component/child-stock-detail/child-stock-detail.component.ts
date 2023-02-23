@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Stock } from '../../models/stock';
 
 @Component({
@@ -8,5 +8,11 @@ import { Stock } from '../../models/stock';
 })
 export class ChildStockDetailComponent {
   @Input() selectedStock:Stock | undefined;
+  @Output() closeEventClick= new EventEmitter();
+  
+  close(){
+    this.closeEventClick.emit();
+    
+  }
 
 }

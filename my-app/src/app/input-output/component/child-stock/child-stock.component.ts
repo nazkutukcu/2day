@@ -8,15 +8,20 @@ import { Stock } from '../../models/stock';
 })
 export class ChildStockComponent {
 
-  selectedId:number  | undefined;
-  @Input() productList: 
+  @Input() selectedId:number  | undefined;
+  @Input() stockList: 
 
   ReadonlyArray<Stock> | undefined;
   @Output() detailShowClick = new EventEmitter<number>();
+ 
 
   showDetail(id: number) {
     this.selectedId=id;
     this.detailShowClick.emit(this.selectedId);
+  }
+  highlightRow(selectedId:number)
+  {
+    return this.selectedId==this.selectedId;
   }
  
 

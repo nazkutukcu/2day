@@ -1,3 +1,3 @@
 <p>parent-product works!</p>
-<app-child-stock (detailShowClick)="showDetail($event)" [stockList]="stockList"></app-child-stock>
-<app-child-stock-detail *ngIf="toggleSelectedStock" [selectedProduct]="SelectedStock"></app-child-stock-detail>
+<app-child-stock [selectedId]="selectedStock?.id" (detailShowClick)="showDetail($event)" [stockList]="stockList"></app-child-stock>
+<app-child-stock-detail  (closeEventClick)="close()" *ngIf="toggleStockDetail" [selectedStock]="selectedStock"></app-child-stock-detail>
