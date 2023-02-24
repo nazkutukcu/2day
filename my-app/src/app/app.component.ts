@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FakeserviceService } from './fakeservice.service';
+
 
 
 @Component({
@@ -11,8 +11,9 @@ export class AppComponent {
   title = 'my-app';
 
   //FakeserviceService:any;
-  constructor(private fakeService: FakeserviceService) { 
+  constructor() { 
 
+    /*
     this.fakeService.getPostUserId(3).subscribe(x=>{
       console.log(x)
     })
