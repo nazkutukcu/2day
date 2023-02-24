@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,8 +12,8 @@ export class AppComponent {
   title = 'my-app';
 
   //FakeserviceService:any;
-  constructor() { 
-
+  
+  
     /*
     this.fakeService.getPostUserId(3).subscribe(x=>{
       console.log(x)
@@ -52,5 +53,5 @@ export class AppComponent {
       console.log(x)
     })
     */
-  }
+  
 }

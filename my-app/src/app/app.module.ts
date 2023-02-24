@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ajax } from 'rxjs/ajax';
 import{HttpClientModule} from '@angular/common/http';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { PostSearchComponent } from './components/post-search/post-search.component';
+import { PostComponent } from './post/post.component';
 
 interface product{
   id:number;
@@ -15,7 +18,10 @@ interface product{
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostListComponent,
+    PostSearchComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
