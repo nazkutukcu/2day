@@ -16,7 +16,7 @@ export class PostService {
  GetSearchByUserId(id:number)
  {
    let params= new HttpParams().set('userId',id);
-  return this._http.get<ReadonlyArray<Post>>('https://jsonplaceholder.typicode.com/posts',{params:params})
+   return this._http.get<ReadonlyArray<Post>>('https://jsonplaceholder.typicode.com/posts',{params:params})
  }
 
 }
