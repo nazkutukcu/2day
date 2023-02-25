@@ -17,10 +17,10 @@ export class PostComponent {
     this.postService.getAll().subscribe(x=> this.postList=x);
   }
 
-  search(search:number)
+  search(search:string)
   {
     this.loading=true;
-    this.postService.GetSearchByUserId(search).subscribe(x=>{
+    this.postService.GetSearchByTitle(search).subscribe(x=>{
       this.postList=x; this.loading=false;})
   }
 

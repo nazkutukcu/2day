@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-search',
@@ -6,12 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./post-search.component.css']
 })
 export class PostSearchComponent {
-  @Output() searchEvent = new EventEmitter<number>(); //number
+  @Output() searchEvent = new EventEmitter<string>(); //number
   
   
   search(text: any) {
   
-    this.searchEvent.emit(text as number);
+    this.searchEvent.emit(text as string);
    //this.searchEvent.includes(text as string);
   }
 
