@@ -8,7 +8,8 @@ import { Post } from 'src/app/models/post';
 })
 export class PostListComponent {
   
-  @Input() postList: ReadonlyArray<Post>=[];
+  @Input() postList: ReadonlyArray<Post>=[];   //postList değişkenini input decarator'u ile işaretledik, 
+                                               //çünkü dışarıdan değer almasını istiyoruz
   
   
 
