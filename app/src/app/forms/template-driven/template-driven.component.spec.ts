@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExampleComponent } from './example.component';
+import { TemplateDrivenComponent } from './template-driven.component';
 
-describe('ExampleComponent', () => {
-  let component: ExampleComponent;
-  let fixture: ComponentFixture<ExampleComponent>;
+describe('TemplateDrivenComponent', () => {
+  let component: TemplateDrivenComponent;
+  let fixture: ComponentFixture<TemplateDrivenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExampleComponent ]
+      declarations: [ TemplateDrivenComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ExampleComponent);
+    fixture = TestBed.createComponent(TemplateDrivenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
