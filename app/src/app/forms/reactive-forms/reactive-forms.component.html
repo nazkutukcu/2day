@@ -4,9 +4,78 @@
     <div class="col-md-6 offset-md-3">
       <form [formGroup]="productForm" (ngSubmit)="save()">
         <div>
-          <h3>Form Properties</h3>
+          <h3>Ürün Kayıt</h3>
         </div>
 
+
+
+        <div class="mb-3">
+          <label class="form-label">Barcode :</label>
+          <input formControlName="barcode" type="text" class="form-control" />
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('barcode')">
+              <div *ngIf="isInvalidControl('barcode', 'required')">
+                ürün barcode alanı gereklidir.
+              </div>
+              <div *ngIf="isInvalidControl('barcode', 'barcodeFormat')">
+                ürün barcode doğru formatta değil.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--bitiş başlangıç tarih-->
+
+        <div class="mb-3">
+          <label class="form-label">Yayınlanma aralığı(Başlangıç) :</label>
+          <input
+            formControlName="publishStartDate"
+            type="datetime-local"
+            class="form-control"
+          />
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('publishStartDate')">
+              <div *ngIf="isInvalidControl('publishStartDate', 'required')">
+                ürün başlangıç tarihi alanı gereklidir.
+              </div>
+              
+            </div>
+          </div>
+
+
+
+
+
+          <label class="form-label">Yayınlanma aralığı(Bitiş) :</label>
+          <input
+            formControlName="publishEndDate"
+            type="datetime-local"
+            class="form-control"
+          />
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('publishEndDate')">
+              <div *ngIf="isInvalidControl('publishEndDate', 'required')">
+                ürün bitiş tarihi alanı gereklidir.
+              </div>
+              
+            </div>
+          </div>
+
+
+          <div class="form-text text-danger">
+            <div
+              *ngIf="
+                productForm.errors?.['dataRange'] &&
+                (productForm.touched || productForm.dirty)
+              "
+            >
+              Başlangıç ve bitiş tarihleri uyumlu değildir.
+            </div>
+          </div>
+        </div>
+
+
+<!---->
         <div class="mb-3">
           <label class="form-label">İsim :</label>
           <input formControlName="name" type="text" class="form-control" />
@@ -43,12 +112,56 @@
 
         <div class="mb-3">
           <label class="form-label">Fiyat :</label>
-          <input formControlName="price" type="text" class="form-control" />
+          <input formControlName="price" type="number" class="form-control" />
+
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('price')">
+              <div *ngIf="isInvalidControl('price', 'required')">
+                ürün fiyat alanı gereklidir.
+              </div>
+
+              <div
+                *ngIf="
+                  isInvalidControl('price', 'min') ||
+                  isInvalidControl('price', 'max')
+                "
+              >
+                Fiyat 100 ile 1000 arasında olmalıdır.
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Stock :</label>
           <input formControlName="stock" type="text" class="form-control" />
+       
+       
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('stock')">
+              <div *ngIf="isInvalidControl('stock', 'required')">
+                ürün stok alanı gereklidir.
+              </div>
+
+              <div
+                *ngIf="
+                  isInvalidControl('stock', 'min') ||
+                  isInvalidControl('stock', 'max')
+                "
+              >
+                ürün stok değeri 10 ile 50 arasında olmalıdır
+              </div>
+            </div>
+          </div>
+       
+       
+       
+       
+       
+       
+       
+       
+       
         </div>
         <div>
 
@@ -86,6 +199,16 @@
             </div>
           </div>
 
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              formControlName="isPublish"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Yayınlansın mı?</label
+            >
+          </div>
 
 
 

@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CategoryMenu } from 'src/app/models/category-menu';
 import { Product } from 'src/app/models/product';
 import { PublishMenu } from 'src/app/models/publish-menu';
+import { barcodeValidator } from 'src/app/validations/barcode-validator';
+import { PublishStartEndDataValidator } from 'src/app/validations/publish-start-end-validator';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -12,15 +14,22 @@ import { PublishMenu } from 'src/app/models/publish-menu';
 export class ReactiveFormsComponent {
 
   newProduct: Product|undefined=undefined;
-  productForm=this.formBuilder.group({
+  productForm=this.formBuilder.group({    //validasyon alanı
   
     "name":["",[Validators.required, Validators.minLength(5)]],
     "price":["",[Validators.required,Validators.min(100), Validators.max(1000)]],
     "stock":["", [Validators.required,Validators.min(10), Validators.max(50)]],
     'category':['',Validators.required],
-     publish:["2"]
+     publish:["2"],
+     isPublish:[false],
+     barcode: ['', [Validators.required, barcodeValidator()]],
+     publishStartDate: [new Date(), [Validators.required]],
+      publishEndDate: [new Date(), [Validators.required]],  
 
-  })
+  },
+  { validators: PublishStartEndDataValidator() }
+  
+  )
 
   categoryMenuList:CategoryMenu[]=[
     {id:1,text:'kalemler'},
@@ -59,6 +68,10 @@ export class ReactiveFormsComponent {
     if(control.errors?.['required']) return true;
     if(control.errors?.['minlength']) return true;
     if(control.errors?.['maxlength']) return true;
+    if(control.errors?.['max']) return true;
+    if(control.errors?.['min']) return true;
+    if (control.errors?.['barcodeFormat']) return true;
+    
 
     return false;
 
