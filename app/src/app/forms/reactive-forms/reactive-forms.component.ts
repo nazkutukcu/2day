@@ -4,7 +4,9 @@ import { CategoryMenu } from 'src/app/models/category-menu';
 import { Product } from 'src/app/models/product';
 import { PublishMenu } from 'src/app/models/publish-menu';
 import { barcodeValidator } from 'src/app/validations/barcode-validator';
+import { ExistProductNameValidator } from 'src/app/validations/exist-product-name-validator';
 import { PublishStartEndDataValidator } from 'src/app/validations/publish-start-end-validator';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -15,19 +17,31 @@ export class ReactiveFormsComponent {
 
   newProduct: Product|undefined=undefined;
   productForm=this.formBuilder.group({    //validasyon alanı
+
+    name: [
+      '',
+      {
+        Validators: [Validators.required, Validators.minLength(5)],
+        asyncValidators: [ExistProductNameValidator(this.postService)],
+        updateOn:'change' //change,blur,submit
+      },
+    ],
   
-    "name":["",[Validators.required, Validators.minLength(5)]],
+    //"name":["",[Validators.required, Validators.minLength(5)]],
     "price":["",[Validators.required,Validators.min(100), Validators.max(1000)]],
     "stock":["", [Validators.required,Validators.min(10), Validators.max(50)]],
     'category':['',Validators.required],
      publish:["2"],
      isPublish:[false],
-     barcode: ['', [Validators.required, barcodeValidator()]],
+     barcode: ['', [Validators.required, barcodeValidator()],//eksik
+                 ],
      publishStartDate: [new Date(), [Validators.required]],
       publishEndDate: [new Date(), [Validators.required]],  
 
   },
-  { validators: PublishStartEndDataValidator() }
+  { validators: PublishStartEndDataValidator(),
+    updateOn:'blur',
+   }
   
   )
 
@@ -45,12 +59,14 @@ export class ReactiveFormsComponent {
   ]
 
 
+  constructor(private formBuilder:FormBuilder,  private postService: PostService){
 
-
-
-
-  constructor(private formBuilder:FormBuilder){
-
+    this.postService.searchByProductName('sunt').subscribe((x) => {
+      console.log(x.length);
+    });
+    this.productForm.get('barcode')?.valueChanges.subscribe(x=>{ //girilen değerden haberdar olmak için
+      console.log(x);
+    })
   }
 
   save(){
