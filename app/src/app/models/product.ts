@@ -4,4 +4,7 @@ export interface Product {
     price:number |undefined;
     stock:number| undefined;
     category:string;
+    email:string;
+   
+    
 }

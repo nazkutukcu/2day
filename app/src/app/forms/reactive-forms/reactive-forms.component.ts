@@ -4,6 +4,7 @@ import { CategoryMenu } from 'src/app/models/category-menu';
 import { Product } from 'src/app/models/product';
 import { PublishMenu } from 'src/app/models/publish-menu';
 import { barcodeValidator } from 'src/app/validations/barcode-validator';
+import { passwordValidator } from 'src/app/validations/password-validator';
 import { PublishStartEndDataValidator } from 'src/app/validations/publish-start-end-validator';
 
 @Component({
@@ -14,6 +15,7 @@ import { PublishStartEndDataValidator } from 'src/app/validations/publish-start-
 export class ReactiveFormsComponent {
 
   newProduct: Product|undefined=undefined;
+  isButtonVisible = false;
   productForm=this.formBuilder.group({    //validasyon alanı
   
     "name":["",[Validators.required, Validators.minLength(5)]],
@@ -24,7 +26,9 @@ export class ReactiveFormsComponent {
      isPublish:[false],
      barcode: ['', [Validators.required, barcodeValidator()]],
      publishStartDate: [new Date(), [Validators.required]],
-      publishEndDate: [new Date(), [Validators.required]],  
+      publishEndDate: [new Date(), [Validators.required]],
+      "email": ['', [Validators.required, Validators.minLength(10)]],
+      password: ['', [Validators.required, passwordValidator()]],
 
   },
   { validators: PublishStartEndDataValidator() }
@@ -71,6 +75,7 @@ export class ReactiveFormsComponent {
     if(control.errors?.['max']) return true;
     if(control.errors?.['min']) return true;
     if (control.errors?.['barcodeFormat']) return true;
+    if (control.errors?.['passwordFormat']) return true;
     
 
     return false;
@@ -94,5 +99,8 @@ export class ReactiveFormsComponent {
       [validationName];
 
   }
+  
+
+
 
 }
