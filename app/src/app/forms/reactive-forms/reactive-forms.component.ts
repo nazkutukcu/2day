@@ -4,8 +4,10 @@ import { CategoryMenu } from 'src/app/models/category-menu';
 import { Product } from 'src/app/models/product';
 import { PublishMenu } from 'src/app/models/publish-menu';
 import { barcodeValidator } from 'src/app/validations/barcode-validator';
+import { ExistPasswordValidator } from 'src/app/validations/exist-password-validator';
 import { passwordValidator } from 'src/app/validations/password-validator';
 import { PublishStartEndDataValidator } from 'src/app/validations/publish-start-end-validator';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -26,9 +28,17 @@ export class ReactiveFormsComponent {
      isPublish:[false],
      barcode: ['', [Validators.required, barcodeValidator()]],
      publishStartDate: [new Date(), [Validators.required]],
-      publishEndDate: [new Date(), [Validators.required]],
-      "email": ['', [Validators.required, Validators.minLength(10)]],
-      password: ['', [Validators.required, passwordValidator()]],
+     publishEndDate: [new Date(), [Validators.required]],
+
+
+     "email": ['email@example.com', [Validators.required, Validators.minLength(10),Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password: [
+        '',
+        {
+          validators: [Validators.required , passwordValidator()],
+          asyncValidators: [ExistPasswordValidator(this.postService)],
+        },
+      ],
 
   },
   { validators: PublishStartEndDataValidator() }
@@ -53,7 +63,11 @@ export class ReactiveFormsComponent {
 
 
 
-  constructor(private formBuilder:FormBuilder){
+  constructor(private formBuilder:FormBuilder, private postService: PostService){
+
+      this.postService.searchByProductName('sunt').subscribe((x) => {
+      console.log(x.length);
+    });
 
   }
 
@@ -76,6 +90,7 @@ export class ReactiveFormsComponent {
     if(control.errors?.['min']) return true;
     if (control.errors?.['barcodeFormat']) return true;
     if (control.errors?.['passwordFormat']) return true;
+    if(control.errors?.['pattern']) return true;
     
 
     return false;
