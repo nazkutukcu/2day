@@ -11,6 +11,7 @@ import { PublishMenu } from '../models/publish-menu';
 })
 export class ReactiveFormComponent {
 
+  isButtonVisible = false;
   newProduct: Product | undefined = undefined;
   public productForm = this.formBuilder.group({
 

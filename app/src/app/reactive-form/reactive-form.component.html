@@ -62,7 +62,33 @@
             >Yayınlansın mı?</label
           >
         </div>
-        <button type="submit" class="btn btn-primary">Kaydet</button>
+        <button (click)="this.isButtonVisible = true" type="submit" class="btn btn-primary">Kaydet</button>
+
+
+        
+          <!--kullanıcı bilgileri gözüksün-->
+
+          <div class="mb-3" *ngIf="this.isButtonVisible" >
+            <h3>Kullanıcı Bilgileri</h3>
+            <ul>
+              <li>Girilen isim: :{{ productForm.get("name")?.value | json }}</li>
+              <li>Girilen fiyat :{{ productForm.get("price")?.value | json }}</li>
+              <li>Girilen kategori :{{ productForm.get("category")?.value | json }}</li>
+              <li>süre :{{ productForm.get("isPublish")?.value | json }}</li>
+              <li>yayın kategori :{{ productForm.get("publish")?.value | json }}</li>
+           
+            
+            </ul>
+          </div>
+        
+
+
+
+
+
+
+
+
       </form>
     </div>
   </div>
