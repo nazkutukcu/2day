@@ -1,0 +1,37 @@
+<p>main-layout works!</p>
+
+<div class="container">
+
+    <div class="row mt-3">
+        <div class="col-md-3">
+
+            <div class="list-group">
+                <a routerLinkActive="active" routerLink="/anasayfa" class="list-group-item list-group-item-action"
+                    aria-current="true">
+                    anasayfa
+                </a>
+                <a routerLinkActive="active" routerLink="/hakkimizda"
+                    class="list-group-item list-group-item-action">Hakkımızda</a>
+              
+                <a routerLinkActive="active" routerLink="/iletisim"
+                    class="list-group-item list-group-item-action">İletişim</a>
+                <a routerLinkActive="active" routerLink="/admin"
+                    class="list-group-item list-group-item-action">Admin</a>
+                    <a routerLinkActive="active" routerLink="/order/component1"
+                    class="list-group-item list-group-item-action">Component 1-lazy</a>
+                    <a routerLinkActive="active" routerLink="/order/component2"
+                    class="list-group-item list-group-item-action">Component 2-lazy</a>
+
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+
+</div>
+
+
+
