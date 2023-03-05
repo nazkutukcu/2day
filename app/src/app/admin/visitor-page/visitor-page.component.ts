@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { VisitorStateService } from 'src/app/visitor-state.service';
 
 @Component({
   selector: 'app-visitor-page',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./visitor-page.component.css']
 })
 export class VisitorPageComponent {
+
+  constructor(public visitorStateService:VisitorStateService){}
+
+  isChecked: boolean = false;
+ 
+  checkValue(event: any){
+    this.isChecked =  !this.isChecked;
+   
+    
+ }
 
 }

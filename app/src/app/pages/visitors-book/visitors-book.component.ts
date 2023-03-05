@@ -1,9 +1,11 @@
-import { Visitor } from '@angular/compiler';
+
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ContentType } from 'src/app/models/contentType';
 import { PublishMenu } from 'src/app/models/publishMenu';
-
+import { Visitor } from 'src/app/models/visitor';
+import { VisitorStateService } from 'src/app/visitor-state.service';
+import { BirhdateValidator } from '../../validations/birthDateValidator';
 @Component({
   selector: 'app-visitors-book',
   templateUrl: './visitors-book.component.html',
@@ -13,15 +15,19 @@ export class VisitorsBookComponent {
 
   newVisitor: Visitor|undefined=undefined;
 
+  newFormArray:Visitor[]=[];
+  isButtonVisible = false;
+  
   visitorForm=this.formBuilder.group({    //validasyon alanı
   
-    "name":["",[Validators.required, Validators.minLength(5)]],
-    "email": ['email@example.com', [Validators.required, Validators.minLength(10),Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-    "content":["",[Validators.required, Validators.minLength(50)]],
-     publish:[""],
-     isPublish:[false],
-     'contentType':['',Validators.required],
-     birthDate: [new Date(), [Validators.required]],
+    name:["",[Validators.required, Validators.minLength(5)]],
+    email: ['email@example.com', [Validators.required, Validators.minLength(10),Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+    content:["",[Validators.required, Validators.minLength(50)]],
+    publishdateExpire: ["",Validators.required],  
+    contentType:["",Validators.required],
+    birthDate: ["", [Validators.required,BirhdateValidator()]],
+    isConfirmed:[false]
+     
 
   },
 )
@@ -44,12 +50,16 @@ publishMenulist: PublishMenu[] = [
 
 
 
-constructor(private formBuilder:FormBuilder){}
+constructor(private formBuilder:FormBuilder,public visitorStateService:VisitorStateService){}
 
 save(){
-  
-  this.newVisitor=this.visitorForm.value as Visitor;
-  console.log(this.newVisitor);
+ 
+  this.visitorForm.controls['isConfirmed'].setValue(false);
+  this.newVisitor = this.visitorForm.value as unknown as Visitor;
+  this.visitorStateService.addVisitor(this.newVisitor);
+  console.log(this.visitorStateService.visitors);
+  this.visitorStateService.resetForm(this.visitorForm);
+ 
 }
 
 isInvalid(controlName:string) : boolean{
@@ -64,6 +74,8 @@ isInvalid(controlName:string) : boolean{
   if(control.errors?.['max']) return true;
   if(control.errors?.['min']) return true;
   if(control.errors?.['pattern']) return true;
+  if (control.errors?.['birthdateFormat']) return true;
+
   
 
   return false;
