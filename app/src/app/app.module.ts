@@ -4,15 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HighlightDirective } from './directieves/highlight.directive';
-import { CounterDirective } from './directieves/counter.directive';
-
+import { TextboxComponent } from './textbox/textbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective,
-    CounterDirective,
+    TextboxComponent,
+  
 
   ],
   imports: [

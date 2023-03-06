@@ -1,4 +1,7 @@
-<div appHighlight>bu bir div içeriğidir</div>
+<app-textbox>
+    <input type="text" value="{{name}}">
+    <input type="text" value="{{surname}}">
+</app-textbox>
 
-<textarea appCounter name="" id="" cols="30" rows="10"></textarea>
+<button (click)="change()">değiştir</button>
 <router-outlet></router-outlet>
