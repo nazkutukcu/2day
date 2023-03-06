@@ -26,7 +26,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
   ],
   imports: [
   CommonModule,
-  AppRoutingModule
+  AppRoutingModule,
+  FormsModule
   ]
 })
 export class AdminModule { }

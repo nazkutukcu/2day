@@ -24,7 +24,7 @@
             <button (click)="visitorStateService.deleteVisitor(visitor.email)">delete</button>
             
             <label for="">Confirm</label>
-            <input type="checkbox" [(ngModel)]="isChecked"(change)="checkValue(isChecked? visitor.isConfirmed = true : visitor.isConfirmed = false)" >
+            <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked? visitor.isConfirmed = true : visitor.isConfirmed = false)" [disabled]="visitor.isConfirmed">
             <th>{{ visitor?.isConfirmed }}</th>
          
           </tr>

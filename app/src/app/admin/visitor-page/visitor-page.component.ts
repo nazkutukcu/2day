@@ -11,9 +11,11 @@ export class VisitorPageComponent {
   constructor(public visitorStateService:VisitorStateService){}
 
   isChecked: boolean = false;
+  isDisabled:boolean = false;
  
   checkValue(event: any){
     this.isChecked =  !this.isChecked;
+    this.isDisabled = true;
    
     
  }

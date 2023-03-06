@@ -26,7 +26,8 @@ import { AdminModule } from './admin/admin.module';
     AppRoutingModule,
    //shared
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   
   ],
   providers: [],

@@ -17,8 +17,7 @@ export class PostService {
   getByCommentId(id: number) {
     //return this.http.get<Comment>(
       return this.http.get<any> (`https://jsonplaceholder.typicode.com/comments/${id}`);
-    
-    
+      
   }
 
   getById(id: number) {
