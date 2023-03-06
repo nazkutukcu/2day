@@ -9,6 +9,7 @@ import { ProductCreateComponent } from './pages/product-create/product-create.co
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 import { ProductDeleteComponent } from './pages/product-delete/product-delete.component';
 import { ProductListWithOkComponent } from './pages/product-list-with-ok/product-list-with-ok.component';
+import { ProductListWithOk2Component } from './pages/product-list-with-ok2/product-list-with-ok2.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductListWithOkComponent } from './pages/product-list-with-ok/product
     ProductCreateComponent,
     ProductUpdateComponent,
     ProductDeleteComponent,
-    ProductListWithOkComponent
+    ProductListWithOkComponent,
+    ProductListWithOk2Component
   ],
   imports: [
     BrowserModule,
