@@ -1,1 +1,23 @@
-<p>admin-home-page works!</p>
+<div class="row">
+    <div class="col-md-12">
+      <h3 class="mt-5">sayılar</h3>
+      <table class="table mt-5">
+        <thead>
+          <tr class="table-title">
+            <th>Number of Posts</th>
+            <th>Number of Users</th>
+            <th>Number of Visitors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-text">
+            <td>{{ postList.length}}</td>
+            <td>{{ userList.length}}</td>
+            <td>{{ visitorService.visitors.length}}</td>
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
