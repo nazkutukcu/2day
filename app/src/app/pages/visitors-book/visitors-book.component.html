@@ -24,7 +24,7 @@
                   isInvalidControl('name', 'maxlength')
                 "
               >
-                ziyaretçi isim alanı en az 5 karakter girilmesi gereklidir.
+                Ziyaretçi isim alanı en az 5 karakter girilmesi gereklidir.
               </div>
             </div>
           </div>
@@ -41,11 +41,11 @@
             <div class="form-text text-danger">
               <div *ngIf="isInvalid('email')">
                 <div *ngIf="isInvalidControl('email', 'required')">
-                  email alanı gereklidir
+                  E-mail alanı gereklidir
                 </div>
              
               <div *ngIf="isInvalidControl('email', 'pattern')">
-                email alanı doğru formatta girilmelidir.
+                  E-mail alanı doğru formatta girilmelidir.
               </div>
 
             
@@ -67,10 +67,10 @@
           <div class="form-text text-danger">
             <div *ngIf="isInvalid('birthDate')">
               <div *ngIf="isInvalidControl('birthDate', 'required')">
-                doğum tarihi alanı girilmesi gereklidir.
+                 Doğum tarihi alanı girilmesi gereklidir.
               </div>
               <div *ngIf="isInvalidControl('birthDate', 'birthdateFormat')">
-                doğum tarihi 16 yaşından küçük olmamalıdır.
+                 Doğum tarihi 16 yaşından küçük olmamalıdır.
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
         <!--content-->
 
         <div class="mb-3">
-          <label class="form-label">Yazmak istedikleriniz :</label>
+          <label class="form-label">Yorumunuz :</label>
           <input style="height: 100px" formControlName="content" type="text" class="form-control" />
 
           <div class="form-text text-danger">
@@ -103,11 +103,11 @@
 
         <!--contentType-->
         <div class="mb-3">
-          <label class="form-label">Yazı nedeniniz :</label>
+          <label class="form-label">Yorum tipiniz :</label>
           <select formControlName="contentType" class="form-select">
             <option value="">Seçiniz</option>
             <option
-              value="{{ contentType.id }}"
+              value="{{ contentType.text }}"
               *ngFor="let contentType of contentTypeList"
             >
               {{ contentType.text }}
@@ -117,31 +117,13 @@
           <div class="form-text text-danger">
             <div *ngIf="isInvalid('contentType')">
               <div *ngIf="isInvalidControl('contentType', 'required')">
-                lütfen yazı nedeninizi belirtiniz.
+                lütfen yorum tipini belirtiniz.
               </div>
             </div>
           </div>
         </div>
 
-        <!--publishDateExpire-->
-
-        <!--
-        <div class="mb-3">
-          <label class="form-label">Yayın süresi seçiniz:</label>
-          <div *ngFor="let publish of publishMenulist">
-            <div class="form-check">
-              <input
-                formControlName="publishDateExpire"
-                class="form-check-input"
-                type="radio"
-                value="{{ publish.text }}"
-              />
-              <label class="form-check-label" for="flexRadioDefault1">
-                {{ publish.text }}
-              </label>
-            </div>
-          </div>
-        </div>  -->
+   
 
         <div class="mb-3">
           <label class="form-label">Yayın süresi:</label>
@@ -169,12 +151,12 @@
       <table class="table mt-5">
         <thead>
           <tr class="table-title">
-            <th>Name</th>
+            <th>İsim</th>
             <th>E-mail</th>
-            <th>Content</th>
-            <th>Birthdate</th>
-            <th>Publish</th>
-            <th>Content Type</th>
+            <th>Yorumunuz</th>
+            <th>Doğum tarihi</th>
+            <th>Yayın Süresi</th>
+            <th>Yorum Tipi</th>
           </tr>
         </thead>
         <tbody>

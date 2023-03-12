@@ -1,35 +1,51 @@
-<div class="row">
-    <div class="col-md-12">
-      <table class="table mt-5">
-        <thead>
-          <tr class="table-title">
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Content</th>
-            <th>Birthdate</th>
-            <th>Publish</th>
-            <th>Content Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-text" *ngFor="let visitor of visitorStateService.visitors" >
-            <th>{{ visitor?.name }}</th>
-            <th>{{ visitor?.email }}</th>
-            <th>{{ visitor?.content }}</th>
-            <th>{{ visitor?.birthDate }}</th>
-            <th>{{ visitor?.publishdateExpire }}</th>
-            <th>{{ visitor?.contentType }}</th>
 
-            
-            <button (click)="visitorStateService.deleteVisitor(visitor.email)">delete</button>
-            
-            <label for="">Confirm</label>
-            <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked? visitor.isConfirmed = true : visitor.isConfirmed = false)" [disabled]="visitor.isConfirmed">
-            <th>{{ visitor?.isConfirmed }}</th>
-         
-          </tr>
-        </tbody>
-      </table>
+    <table class="table mt-5">
+      <thead>
+        <tr class="table-title">
+          <th>İsim</th>
+          <th>E-mail</th>
+          <th>Yorumunuz</th>
+          <th>Doğum tarihi</th>
+          <th>Yayın Süresi</th>
+          <th>Yorum Tipi</th>
+          <th>Onayla/Sil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-text" *ngFor="let visitor of visitorStateService.visitors" >
+          <th>{{ visitor?.name }}</th>
+          <th>{{ visitor?.email }}</th>
+          <th>{{ visitor?.content }}</th>
+          <th>{{ visitor?.birthDate }}</th>
+          <th>{{ visitor?.publishdateExpire }}</th>
+          <th>{{ visitor?.contentType }}</th>
+          
+  
+          
+          <!--
+          <button  style="margin-left: 15px;" class="btn btn-dark" (click)="visitorStateService.deleteVisitor(visitor.email)">sil</button>
+          
+          <label for="">Onayla</label>
+          <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked? visitor.isConfirmed = true : visitor.isConfirmed = false)" [disabled]="visitor.isConfirmed">
+          <th>{{ visitor?.isConfirmed }}</th>
+       
+          -->
+          <th>  <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked? visitor.isConfirmed = true : visitor.isConfirmed = false)" [disabled]=" visitor.isConfirmed" ><button class="btn btn-danger" (click)="visitorStateService.deleteVisitor(visitor.email)" style="margin-left: 10px;">sil</button></th>
+          
+          
+        
+          <!-- <th>{{ visitor?.isConfirmed }}</th> -->
+        </tr>
+      </tbody>
+    </table>
+ 
 
-    </div>
-  </div>
+     
+   
+
+
+ 
+
+    
+  
+

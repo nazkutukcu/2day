@@ -1,22 +1,40 @@
 
-<table class="table table-striped">
-    <tbody>
-      <tr>
-        <td>id</td>
-        <td>{{ user?.id }}</td>
-      </tr>
-      <tr>
-        <td>name</td>
-        <td>{{ user?.name }}</td>
-      </tr>
-      <tr>
-        <td>email</td>
-        <td>{{ user?.email }}</td>
-      </tr>
-      <tr>
-        <td>username</td>
-        <td>{{ user?.username }}</td>
-      </tr>
-     
-    </tbody>
-  </table>
+      <table class="table mt-5 ">
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <td>{{ user?.id }}</td>
+          </tr>
+          <tr>
+            <th>NAME</th>
+            <td>{{ user?.name }}</td>
+          </tr>
+          <tr>
+            <th>EMAIL</th>
+            <td>{{ user?.email }}</td>
+          </tr>
+          <tr>
+            <th>USER NAME</th>
+            <td>{{ user?.username }}</td>
+          </tr>
+          <tr>
+            <th>ADDRESS</th>
+            <td > Street: {{ user?.address?.street }}, Suite: {{user?.address?.suite}}, City: {{user?.address?.city}}, Zipcode: {{user?.address?.zipcode}}, Lat: {{ user?.address?.geo?.lat }}, Lng: {{ user?.address?.geo?.lng }}  </td>
+          </tr>
+          <tr>
+            <th>PHONE</th>
+            <td >{{ user?.phone }}</td>
+          </tr>
+          <tr>
+            <th>WEBSITE</th>
+            <td >{{ user?.website }}</td>
+          </tr>
+          <tr>
+            <th>COMPANY</th>
+            <td > Name: {{ user?.company?.name }}, CatchPhrase: {{ user?.company?.catchPhrase }}, Bs: {{ user?.company?.bs }}, </td>
+          </tr>
+         
+         
+        </tbody>
+      </table>
+   

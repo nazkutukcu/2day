@@ -34,7 +34,7 @@ export class VisitorsBookComponent {
 
 //content type
 contentTypeList:ContentType[]=[
-  {id:1,text:'eleştri'},
+  {id:1,text:'eleştiri'},
   {id:2,text:'öneri'},
 
 ];
@@ -47,12 +47,15 @@ publishMenulist: PublishMenu[] = [
 ];
 
 
-
-
-
 constructor(private formBuilder:FormBuilder,public visitorStateService:VisitorStateService){}
 
 save(){
+
+  if (this.visitorForm.invalid) {
+    alert('Lütfen tüm alanları doldurunuz');
+    return;
+  }
+
  
   this.visitorForm.controls['isConfirmed'].setValue(false);
   this.newVisitor = this.visitorForm.value as unknown as Visitor;
