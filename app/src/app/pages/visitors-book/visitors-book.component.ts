@@ -32,14 +32,14 @@ export class VisitorsBookComponent {
   },
 )
 
-//content type
+//content type (dropdown menu)
 contentTypeList:ContentType[]=[
   {id:1,text:'eleştiri'},
   {id:2,text:'öneri'},
 
 ];
 
-//publish date expire
+//publish date expire (radio button)
 publishMenulist: PublishMenu[] = [
   { id: 1, text: '1 ay' },
   { id: 2, text: '3 ay' },
@@ -60,15 +60,15 @@ save(){
   this.visitorForm.controls['isConfirmed'].setValue(false);
   this.newVisitor = this.visitorForm.value as unknown as Visitor;
   this.visitorStateService.addVisitor(this.newVisitor);
-  console.log(this.visitorStateService.visitors);
   alert("form başarıyla gönderildi");
   this.visitorStateService.resetForm(this.visitorForm);
  
 }
 
+//kullanıcıya hata mesajı göstermek için yazılan validasyon fonk
 isInvalid(controlName:string) : boolean{
 
-  let control=this.visitorForm.get(controlName)!;
+  let control=this.visitorForm.get(controlName)!;   //propları aldık
 
   if(!(control.invalid && (control.dirty|| control.touched))) return false;
 
@@ -86,6 +86,7 @@ isInvalid(controlName:string) : boolean{
 
 }
 
+//formun valid olup olmadığını kontrol ettiğim method
 isValid(controlName:string){
   let control =this.visitorForm.get(controlName)!;
   return control.valid && (control.dirty || control.touched);
